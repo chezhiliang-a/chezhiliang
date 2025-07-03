@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>车之亮 - 专业汽车服务</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0A2463',
+                        secondary: '#3E92CC',
+                        accent: '#F9F9F9',
+                        dark: '#0F172A'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .animate-float {
+                animation: float 6s ease-in-out infinite;
+            }
+            .animate-slide-in {
+                animation: slideIn 0.5s ease-out forwards;
+            }
+            .bg-gradient-blue {
+                background: linear-gradient(135deg, #0A2463 0%, #3E92CC 100%);
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .hover-scale {
+                transition: transform 0.3s ease;
+            }
+            .hover-scale:hover {
+                transform: scale(1.03);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50">
+    <!-- 走马灯 -->
+    <div class="bg-primary text-white py-2 overflow-hidden">
+        <div class="marquee-container whitespace-nowrap">
+            <div class="marquee-text inline-block animate-marquee">
+                欢迎访问车之亮网站！专业汽车服务提供商，为您的爱车提供全方位呵护！
+            </div>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav id="navbar" class="bg-primary/95 text-white shadow-lg fixed w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fa fa-car text-2xl mr-2"></i>
+                <h1 class="text-xl md:text-2xl font-bold">车之亮</h1>
+            </div>
+            
+            <!-- 桌面导航 -->
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#home" class="hover:text-secondary transition-colors">首页</a>
+                <a href="#services" class="hover:text-secondary transition-colors">服务项目</a>
+                <a href="#gallery" class="hover:text-secondary transition-colors">案例展示</a>
+                <a href="#about" class="hover:text-secondary transition-colors">关于我们</a>
+                <a href="#feedback" class="hover:text-secondary transition-colors">意见反馈</a>
+                <a href="tel:400-888-8888" class="bg-secondary hover:bg-secondary/90 text-white px-4 py-2 rounded-md transition-all hover:shadow-lg">
+                    <i class="fa fa-phone mr-1"></i> 预约服务
+                </a>
+            </div>
+            
+            <!-- 移动端菜单按钮 -->
+            <button id="menuBtn" class="md:hidden text-white text-xl">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobileMenu" class="md:hidden hidden bg-primary/95 border-t border-gray-700">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#home" class="py-2 hover:text-secondary transition-colors">首页</a>
+                <a href="#services" class="py-2 hover:text-secondary transition-colors">服务项目</a>
+                <a href="#gallery" class="py-2 hover:text-secondary transition-colors">案例展示</a>
+                <a href="#about" class="py-2 hover:text-secondary transition-colors">关于我们</a>
+                <a href="#feedback" class="py-2 hover:text-secondary transition-colors">意见反馈</a>
+                <a href="tel:400-888-8888" class="bg-secondary hover:bg-secondary/90 text-white px-4 py-2 rounded-md text-center transition-all hover:shadow-lg">
+                    <i class="fa fa-phone mr-1"></i> 预约服务
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首页/英雄区域 -->
+    <section id="home" class="pt-20 md:pt-0 min-h-screen flex items-center relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://picsum.photos/id/1071/1920/1080" alt="汽车服务背景" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-primary/70"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 py-20 relative z-10">
+            <div class="max-w-3xl animate-float">
+                <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-white leading-tight text-shadow mb-4">
+                    专业汽车服务<br>尽在<span class="text-secondary">车之亮</span>
+                </h1>
+                <p class="text-[clamp(1rem,2vw,1.25rem)] text-gray-100 mb-8 max-w-2xl">
+                    我们提供全方位的汽车保养、维修和美容服务，让您的爱车焕然一新，始终保持最佳状态。
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#services" class="bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-md transition-all hover:shadow-lg font-medium">
+                        了解服务 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#feedback" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-6 py-3 rounded-md transition-all hover:shadow-lg font-medium backdrop-blur-sm">
+                        联系我们 <i class="fa fa-envelope ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">
+                <path fill="#F9FAFB" fill-opacity="1" d="M0,96L60,85.3C120,75,240,53,360,53.3C480,53,600,75,720,80C840,85,960,75,1080,69.3C1200,64,1320,64,1380,64L1440,64L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- 服务项目 -->
+    <section id="services" class="py-20 bg-accent">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-primary mb-4 reveal-element">
+                    我们的服务项目
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto reveal-element">
+                    车之亮提供全方位的汽车服务，从日常保养到高级美容，满足您的所有需求。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 服务卡片 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale reveal-element">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1072/800/600" alt="汽车保养服务" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa fa-wrench text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">汽车保养</h3>
+                        <p class="text-gray-600 mb-4">
+                            定期保养是保持车辆性能的关键。我们提供机油更换、轮胎换位、刹车系统检查等全面保养服务。
+                        </p>
+                        <a href="#feedback" class="text-primary font-medium hover:text-secondary transition-colors">
+                            了解更多 <i class="fa fa-long-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 服务卡片 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale reveal-element">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1073/800/600" alt="汽车维修服务" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa fa-car text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">汽车维修</h3>
+                        <p class="text-gray-600 mb-4">
+                            无论是发动机故障、电气系统问题还是其他机械故障，我们的专业技师都能为您提供准确诊断和高效修复。
+                        </p>
+                        <a href="#feedback" class="text-primary font-medium hover:text-secondary transition-colors">
+                            了解更多 <i class="fa fa-long-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 服务卡片 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale reveal-element">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1074/800/600" alt="汽车美容服务" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa fa-tint text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">汽车美容</h3>
+                        <p class="text-gray-600 mb-4">
+                            让您的爱车焕然一新！我们提供洗车、打蜡、抛光、内饰清洁等美容服务，恢复车辆原有光彩。
+                        </p>
+                        <a href="#feedback" class="text-primary font-medium hover:text-secondary transition-colors">
+                            了解更多 <i class="fa fa-long-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 服务卡片 4 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale reveal-element">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1075/800/600" alt="轮胎服务" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa fa-circle-o text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">轮胎服务</h3>
+                        <p class="text-gray-600 mb-4">
+                            轮胎是车辆安全的重要保障。我们提供轮胎更换、四轮定位、动平衡等服务，确保您的行车安全。
+                        </p>
+                        <a href="#feedback" class="text-primary font-medium hover:text-secondary transition-colors">
+                            了解更多 <i class="fa fa-long-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 服务卡片 5 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale reveal-element">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1076/800/600" alt="汽车电子服务" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa fa-bolt text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">汽车电子</h3>
+                        <p class="text-gray-600 mb-4">
+                            现代汽车电子系统复杂精密。我们的技师能够诊断和修复各种电子故障，确保您的车辆电子系统正常运行。
+                        </p>
+                        <a href="#feedback" class="text-primary font-medium hover:text-secondary transition-colors">
+                            了解更多 <i class="fa fa-long-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 服务卡片 6 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale reveal-element">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1077/800/600" alt="汽车改装服务" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa fa-cogs text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">汽车改装</h3>
+                        <p class="text-gray-600 mb-4">
+                            想要个性化您的爱车？我们提供外观、内饰、性能等全方位改装服务，打造独一无二的驾驶体验。
+                        </p>
+                        <a href="#feedback" class="text-primary font-medium hover:text-secondary transition-colors">
+                            了解更多 <i class="fa fa-long-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 案例展示 -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-primary mb-4 reveal-element">
+                    案例展示
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto reveal-element">
+                    浏览我们的成功案例，了解我们如何通过专业服务让各种车辆焕然一新。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 案例图片 1 -->
+                <div class="relative overflow-hidden rounded-xl shadow-md reveal-element">
+                    <img src="https://picsum.photos/id/1078/800/600" alt="汽车美容前后对比" class="w-full h-64 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div>
+                            <h3 class="text-white font-bold text-xl mb-2">豪华轿车全车抛光</h3>
+                            <p class="text-gray-100">恢复车辆原有光泽，去除细微划痕</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 案例图片 2 -->
+                <div class="relative overflow-hidden rounded-xl shadow-md reveal-element">
+                    <img src="https://picsum.photos/id/1079/800/600" alt="汽车保养服务" class="w-full h-64 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div>
+                            <h3 class="text-white font-bold text-xl mb-2">SUV大保养</h3>
+                            <p class="text-gray-100">更换机油、滤芯、刹车片全套服务</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 案例图片 3 -->
+                <div class="relative overflow-hidden rounded-xl shadow-md reveal-element">
+                    <img src="https://picsum.photos/id/1080/800/600" alt="汽车改装案例" class="w-full h-64 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div>
+                            <h3 class="text-white font-bold text-xl mb-2">运动套件改装</h3>
+                            <p class="text-gray-100">提升车辆外观运动感和性能</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 案例图片 4 -->
+                <div class="relative overflow-hidden rounded-xl shadow-md reveal-element">
+                    <img src="https://picsum.photos/id/1081/800/600" alt="汽车内饰清洁" class="w-full h-64 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div>
+                            <h3 class="text-white font-bold text-xl mb-2">全车内饰深度清洁</h3>
+                            <p class="text-gray-100">去除污渍，杀菌消毒，恢复车内清新</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 案例图片 5 -->
+                <div class="relative overflow-hidden rounded-xl shadow-md reveal-element">
+                    <img src="https://picsum.photos/id/1082/800/600" alt="汽车电子维修" class="w-full h-64 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div>
+                            <h3 class="text-white font-bold text-xl mb-2">行车电脑故障修复</h3>
+                            <p class="text-gray-100">精准诊断，快速修复，恢复车辆电子系统</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 案例图片 6 -->
+                <div class="relative overflow-hidden rounded-xl shadow-md reveal-element">
+                    <img src="https://picsum.photos/id/1083/800/600" alt="汽车轮胎更换" class="w-full h-64 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-6">
+                        <div>
+                            <h3 class="text-white font-bold text-xl mb-2">高性能轮胎更换</h3>
+                            <p class="text-gray-100">提升抓地力和操控性能，保障行车安全</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-primary mb-4 reveal-element">
+                    关于我们
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto reveal-element">
+                    了解车之亮的历史、使命和专业技术团队，我们致力于为您提供最优质的汽车服务。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="reveal-element">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/1084/800/600" alt="车之亮服务中心" class="rounded-xl shadow-lg w-full h-auto">
+                        <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg hidden md:block">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fa fa-star text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-700 font-medium">10年+</p>
+                                    <p class="text-gray-500 text-sm">专业汽车服务经验</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal-element">
+                    <div class="mb-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-1 bg-secondary rounded-full mr-3"></div>
+                            <h3 class="text-xl font-bold text-primary">公司简介</h3>
+                        </div>
+                        <p id="jsgs" class="text-gray-600 leading-relaxed">
+                            车之亮成立于2015年，是一家专业从事汽车服务的综合性企业。经过多年的发展，我们已成为本地最具影响力的汽车服务品牌之一。我们拥有先进的设备、专业的技术团队和完善的服务体系，致力于为客户提供高品质、全方位的汽车服务。我们的使命是"让每一位车主享受优质的汽车服务体验"，通过不断提升服务质量和技术水平，赢得了广大客户的信赖和好评。
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-1 bg-secondary rounded-full mr-3"></div>
+                            <h3 class="text-xl font-bold text-primary">专业技术</h3>
+                        </div>
+                        <p id="jsny" class="text-gray-600 leading-relaxed">
+                            车之亮拥有一支高素质的技术团队，所有技师均经过严格的专业培训和认证，具备丰富的汽车维修和保养经验。我们引进国际先进的汽车检测和维修设备，确保能够准确诊断和修复各种汽车故障。同时，我们不断跟踪和学习最新的汽车技术，定期对员工进行技术培训，以保证我们的服务水平始终处于行业领先地位。无论是传统燃油汽车还是新能源汽车，我们都能为您提供专业的维修和保养服务。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 意见反馈 -->
+    <section id="feedback" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-primary mb-4 reveal-element">
+                    意见反馈
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto reveal-element">
+                    您的反馈对我们非常重要，它帮助我们不断改进服务质量。请填写以下表单，我们将尽快回复您。
+                </p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white rounded-xl shadow-lg p-8 reveal-element">
+                    <form id="feedbackForm" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">电话</label>
+                                <input type="tel" id="phone" name="phone" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">邮箱</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">主题</label>
+                            <select id="subject" name="subject" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
+                                <option value="">请选择反馈主题</option>
+                                <option value="service">服务评价</option>
+                                <option value="complaint">投诉建议</option>
+                                <option value="cooperation">合作咨询</option>
+                                <option value="other">其他问题</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">留言内容</label>
+                            <textarea id="message" name="message" rows="5" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-colors"></textarea>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <input type="checkbox" id="privacy" name="privacy" required class="w-4 h-4 text-primary focus:ring-primary border-gray-300 rounded">
+                            <label for="privacy" class="ml-2 block text-sm text-gray-600">
+                                我同意车之亮根据<a href="#" class="text-primary hover:underline">隐私政策</a>处理我的个人信息
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-4 rounded-md transition-all hover:shadow-lg">
+                            提交反馈 <i class="fa fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-primary text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <i class="fa fa-car text-2xl mr-2"></i>
+                        <h2 class="text-xl font-bold">车之亮</h2>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        专业汽车服务提供商，为您的爱车提供全方位呵护。我们承诺提供最优质的服务，让您的驾驶体验更加愉悦。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors">
+                            <i class="fa fa-weixin text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors">
+                            <i class="fa fa-weibo text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors">
+                            <i class="fa fa-qq text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">快速链接</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-300 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-white transition-colors">服务项目</a></li>
+                        <li><a href="#gallery" class="text-gray-300 hover:text-white transition-colors">案例展示</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-white transition-colors">关于我们</a></li>
+                        <li><a href="#feedback" class="text-gray-300 hover:text-white transition-colors">意见反馈</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">服务项目</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">汽车保养</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">汽车维修</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">汽车美容</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">轮胎服务</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">汽车电子</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">联系我们</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker text-secondary mt-1 mr-3"></i>
+                            <span class="text-gray-300">北京市朝阳区建国路88号车之亮汽车服务中心</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone text-secondary mr-3"></i>
+                            <span class="text-gray-300">400-888-8888</span>
+                        
